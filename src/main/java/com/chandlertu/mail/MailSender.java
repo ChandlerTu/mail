@@ -9,11 +9,16 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class MailSender {
 
 	private String account;
 	private String password;
 	private String smtp;
+
+	private Logger logger = LoggerFactory.getLogger(MailSender.class);
 
 	public MailSender(String account, String password, String smtp) {
 		this.account = account;
@@ -33,7 +38,7 @@ public class MailSender {
 			message.setText(text);
 			Transport.send(message, account, password);
 		} catch (MessagingException e) {
-			e.printStackTrace();
+			logger.error("", e);
 		}
 	}
 
