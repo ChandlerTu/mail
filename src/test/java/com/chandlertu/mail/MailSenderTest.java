@@ -27,8 +27,9 @@ public class MailSenderTest {
 		String to = props.getProperty("to");
 		String subject = props.getProperty("subject");
 		String text = props.getProperty("text");
+		String ssl = props.getProperty("ssl", "false");
 		MailSender sender = new MailSender(account, password, smtp);
-		sender.send(to, subject, text);
+		sender.send(to, subject, text, ssl);
 	}
 
 }

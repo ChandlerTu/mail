@@ -27,8 +27,17 @@ public class MailSender {
 	}
 
 	public void send(String to, String subject, String text) {
+		send(to, subject, text, "false");
+	}
+
+	public void send(String to, String subject, String text, String ssl) {
 		Properties props = new Properties();
 		props.put("mail.smtp.host", smtp);
+		if (ssl.equals("true")) {
+			props.put("mail.smtp.auth", true);
+			props.put("mail.smtp.ssl.enable", true);
+		}
+
 		Session session = Session.getInstance(props);
 		try {
 			MimeMessage message = new MimeMessage(session);
