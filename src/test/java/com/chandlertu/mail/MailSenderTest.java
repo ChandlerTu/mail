@@ -14,7 +14,7 @@ public class MailSenderTest {
 	@Test
 	public void testSend() {
 		Properties props = new Properties();
-		Path path = Paths.get(System.getProperty("user.home"), ".chandlertu", "mail.properties");
+		Path path = Paths.get(System.getProperty("user.home"), ".mail", "mail.properties");
 		try (InputStreamReader inStream = new InputStreamReader(new FileInputStream(path.toFile()), "utf-8")) {
 			props.load(inStream);
 		} catch (IOException e) {
